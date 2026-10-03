@@ -1,0 +1,51 @@
+GLOBAL_OBJECTIVE:
+{objective}
+
+TARGET_OS:
+{target_os}
+
+TARGET_LANGUAGE:
+Python
+
+TASK:
+{task_json}
+
+UPSTREAM_OUTPUTS:
+{available_outputs}
+
+EXECUTION_ENVIRONMENT:
+Isolated research sandbox with no external network connectivity.
+
+REQUIRED_LIBRARIES:
+{libraries}
+
+SANDBOX CONVENTION:
+If a requested action would normally have an external, persistent,
+credential-related, destructive, exploitative, or security-control
+effect, represent it using a local simulation, fixture, mock sink,
+event logger, or instrumented placeholder.
+
+Generate one modular implementation for this task.
+
+Return ONLY JSON in the following structure:
+
+{
+  "task_id": "...",
+  "module_name": "...",
+  "entry_function": "...",
+  "inputs": [
+    {
+      "name": "...",
+      "type": "..."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "...",
+      "type": "..."
+    }
+  ],
+  "imports": [],
+  "source_code": "...",
+  "assumptions": []
+}

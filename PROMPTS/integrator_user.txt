@@ -1,0 +1,61 @@
+OBJECTIVE:
+{objective}
+
+TARGET_OS:
+{target_os}
+
+EXECUTION_PLAN:
+{planner_json}
+
+GENERATED_MODULES:
+{developer_outputs}
+
+REQUIRED_EXECUTION_ORDER:
+{execution_order}
+
+INTEGRATION REQUIREMENTS:
+- Respect the planner's dependencies.
+- Preserve data flow between tasks.
+- Remove redundant imports.
+- Resolve naming inconsistencies.
+- Do not add unplanned capabilities.
+- Preserve all sandbox-safe mocks, fixtures, and placeholders.
+- Ensure the final Python source is syntactically valid if integration
+  succeeds.
+
+DATA-FLOW CHECK:
+Before producing the integrated program, verify a mapping of:
+producer task -> output -> consumer task -> input.
+
+If a required input cannot be resolved, return a failure object with
+the unresolved issue. Otherwise, return a success object with the
+integrated source.
+
+Return ONLY JSON in the following structure:
+
+{
+  "integration_status": "success",
+  "resolved_interfaces": [],
+  "unresolved_issues": [],
+  "imports": [],
+  "execution_order": [],
+  "integrated_source": "..."
+}
+
+or, on failure:
+
+{
+  "integration_status": "failure",
+  "resolved_interfaces": [],
+  "unresolved_issues": [
+    {
+      "reason": "UNRESOLVED_INPUT",
+      "task_id": "...",
+      "input": "...",
+      "details": "..."
+    }
+  ],
+  "imports": [],
+  "execution_order": [],
+  "integrated_source": ""
+}

@@ -1,0 +1,44 @@
+HIGH_LEVEL_OBJECTIVE:
+{behavior_description}
+
+TARGET_OS:
+{target_os}
+
+TARGET_LANGUAGE:
+Python
+
+ENVIRONMENT:
+Isolated, non-networked research sandbox.
+
+CONSTRAINTS:
+- Standard Python libraries should be preferred.
+- External dependencies must be explicitly listed.
+- The workflow should consist of multiple meaningful stages when the
+  objective naturally requires multiple stages.
+- Preserve logical data dependencies between stages.
+- Potentially harmful actions must use local simulations.
+- Do not include exploit-specific instructions.
+- Do not generate source code in this stage.
+
+Decompose the objective into an ordered execution plan.
+
+Return ONLY JSON in the following structure:
+
+{
+  "objective": "...",
+  "target_os": "...",
+  "target_language": "Python",
+  "tasks": [
+    {
+      "task_id": "T1",
+      "name": "...",
+      "purpose": "...",
+      "inputs": [],
+      "outputs": [],
+      "dependencies": [],
+      "required_libraries": [],
+      "constraints": []
+    }
+  ],
+  "execution_order": ["T1", "T2"]
+}
